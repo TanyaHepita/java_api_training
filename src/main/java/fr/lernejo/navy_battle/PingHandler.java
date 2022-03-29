@@ -1,24 +1,34 @@
 package fr.lernejo.navy_battle;
 
+import com.sun.net.httpserver.HttpExchange;
+
 import com.sun.net.httpserver.HttpHandler;
 
-import com.sun.net.httpserver.HttpExchange;
-import java.io.IOException;
 
+import java.io.IOException;
 import java.io.OutputStream;
 
-public class PingHandler implements HttpHandler {
+public class HttpHandlerPing implements HttpHandler{
+
+    private final int HTTP_OK_STATUS = 200;
+    
+    private final int HTTP_NOT_FOUND_STATUS = 404;
+
     @Override
-
-    public void handle(HttpExchange exchange) throws IOException {
-        exchange.sendResponseHeaders(200,2); 
-
-        try (OutputStream os = exchange.getResponseBody()) {
-            
-            os.write("ok ! ".getBytes());
+    public void handle(HttpExchange exchange) throws IOException
+    {
+        
+        String body = "ok !";
+        
+        exchange.sendResponseHeaders(HTTP_OK_STATUS, body.length());
+        
+        try ( OutputStream os = exchange.getResponseBody() )
+        {
+    
+            os.write(body.getBytes());
         }
-
-
+ 
     }
 }
+
 
