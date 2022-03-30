@@ -1,6 +1,6 @@
 package fr.lernejo.navy_battle;
 
-import org.assertj.core.api.Assertions;
+//import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -13,6 +13,6 @@ class HttpClientStartTest {
         HttpServerSimple server = new HttpServerSimple(9876, "");
         server.start();
         httpClientStart.SendStart("http://localhost:9876");
-        Assertions.assertThat(false).isEqualTo(false);
+       // Assertions.assertThat(false).isEqualTo(false);
     }
 }
