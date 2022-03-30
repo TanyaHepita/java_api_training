@@ -17,41 +17,24 @@ public class HttpClientSimple {
     private final HttpClient client;
 
     private final int port;
-
-    public HttpClientSimple(int port) {
-
-        this.client = HttpClient.newHttpClient();
-
+    public HttpClientSimple(int port)
+    {   this.client = HttpClient.newHttpClient();
         this.port = port;
 
     }
-
-    public void SendPost(String adversaryUrl) throws IOException, InterruptedException {
-
-        HttpRequest requestPost = HttpRequest.newBuilder()
-
+    public void SendPost(String adversaryUrl) throws IOException, InterruptedException
+    {       HttpRequest requestPost = HttpRequest.newBuilder()
             .uri(URI.create(adversaryUrl + "/api/game/start"))
-
             .setHeader("Accept", "application/json")
-
             .setHeader("Content-Type", "application/json")
 
             .POST(BodyPublishers.ofString("{\"id\":\"1\", \"url\":\"http://localhost:" + this.port + "\", \"message\":\"I will crush you!\"}"))
-
             .build();
         try
-        {
-
-            this.client.sendAsync(requestPost, BodyHandlers.ofString()).thenAccept(resp -> System.out.println("Response: " +
-
+        {       this.client.sendAsync(requestPost, BodyHandlers.ofString()).thenAccept(resp -> System.out.println("Response: " +
                 resp.statusCode() + " : " + resp.body()));
         }
-
         catch (Exception e) {
             e.printStackTrace();
-
-        }
-
-    }
-
+        }}
 }

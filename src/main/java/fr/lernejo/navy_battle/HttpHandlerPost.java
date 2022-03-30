@@ -33,19 +33,14 @@ public class HttpHandlerPost implements HttpHandler {
         } else {
             String resp = new String(exchange.getRequestBody().readAllBytes(), StandardCharsets.UTF_8);
             String[] split = resp.split("url\":\"");
-            split = split[1].split("\", \"message");
-            String body = "{\"id\":\"2\", \"url\":\"http://localhost:" + this.port + "\", \"message\":\"May the code win\"}";
-            exchange.getResponseHeaders().set("Content-type", "application/json");
+            split = split[1].split("\", \"message");String body = "{\"id\":\"2\", \"url\":\"http://localhost:" + this.port + "\", \"message\":\"May the code win\"}";exchange.getResponseHeaders().set("Content-type", "application/json");
             exchange.sendResponseHeaders(HTTP_ACCEPTED_STATUS, body.length());
             try (OutputStream os = exchange.getResponseBody()){
-                os.write(body.getBytes());
-            }
+                os.write(body.getBytes());}
             manageBattle.addClient(port, split[0], manageBattle);
             try {
                 manageBattle.fire();
             } catch (InterruptedException e) {
                 e.printStackTrace();
-            }
-        }
-    }
+            }}}
 }

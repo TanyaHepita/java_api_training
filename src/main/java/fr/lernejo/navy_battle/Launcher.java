@@ -4,7 +4,7 @@ package fr.lernejo.navy_battle;
 import java.io.IOException;
 
 public class Launcher {
-    private int port = 9876;
+    private  final int port = 9876;
 
     public static void main(String[] args) throws IOException, InterruptedException {
         if (args.length == 1) {
