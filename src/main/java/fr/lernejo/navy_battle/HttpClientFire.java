@@ -33,7 +33,4 @@ public class HttpClientFire {
             System.err.println("Error while receiving response when Fire request: " + e);}
         return true;
     }
-
-    public void SendGet(String valueOf) {
-    }
 }
