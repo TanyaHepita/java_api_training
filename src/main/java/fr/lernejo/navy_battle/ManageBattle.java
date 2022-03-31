@@ -1,5 +1,7 @@
 package fr.lernejo.navy_battle;
 
+import java.io.IOException;
+
 public class ManageBattle {
 
     final int[][] adversaryCell;
@@ -14,7 +16,6 @@ public class ManageBattle {
             }
         }
         this.nextCoords = new int[2];
-        this.nextCoords[0] = 0;
         this.nextCoords[1] = -1;
         this.client = new HttpClientFire[1];
     }
@@ -35,14 +36,10 @@ public class ManageBattle {
         return (char)(this.nextCoords[0] + 65);
     }
 
-    public void fire(){
+    public void fire() throws IOException, InterruptedException {
         this.getNextCoords();
-        try {
-            this.client[0].SendFire(String.valueOf(this.coordToChar()) + String.valueOf(this.nextCoords[1]));
-        }
-        catch (Exception exception){
-            exception.printStackTrace();
-        }
+        System.out.println(String.valueOf(coordToChar()) + (this.nextCoords[1]));
+        this.client[0].SendGet(String.valueOf((coordToChar()) + (this.nextCoords[1])));
     }
 
 }
