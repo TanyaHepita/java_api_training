@@ -16,7 +16,7 @@ public class HttpHandlerPing implements HttpHandler
     @Override
     public void handle(HttpExchange exchange) throws IOException {
 
-        String body = "body OK";
+        String body = "OK";
         exchange.sendResponseHeaders(HTTP_OK_STATUS, body.length());
         try (OutputStream os = exchange.getResponseBody())
         {
